@@ -1,6 +1,3 @@
-Here’s an updated version of the `README.md` with more details about the website, including its purpose, features, and how the AI virtual try-on functionality works. I’ve also added a section for contributors and troubleshooting.
-
-```markdown
 # 👗 AI-Powered Virtual Try-On Clothing Store
 
 Welcome to the **AI-Powered Virtual Try-On Clothing Store**! This Next.js-based website allows users to browse and purchase clothing items while leveraging AI technology to virtually try on clothes before buying. The project integrates with **Hugging Face API** for AI-powered virtual try-on and **Edge Store** for secure file storage.
@@ -23,7 +20,6 @@ Before you begin, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
-- [Git](https://git-scm.com/)
 
 ---
 
@@ -68,33 +64,6 @@ Before you begin, ensure you have the following installed:
    ```
 
    The website will be available at `http://localhost:3000`.
-
----
-
-## 🔧 Environment Variables
-
-| Variable Name              | Description                                                                 |
-|----------------------------|-----------------------------------------------------------------------------|
-| `HUGGING_FACE_API_KEY`     | Your Hugging Face API key for accessing AI models.                          |
-| `EDGE_STORE_SECRET_KEY`    | Secret key for authenticating with Edge Store.                              |
-| `EDGE_STORE_ACCESS_KEY`    | Access key for authenticating with Edge Store.                              |
-
----
-
-## 📂 Project Structure
-
-```
-your-repo-name/
-├── public/               # Static assets (images, fonts, etc.)
-├── src/                  # Source code
-│   ├── app/              # Next.js app router (pages, layouts, etc.)
-│   ├── components/       # Reusable UI components
-│   ├── lib/              # Utility functions and libraries
-│   └── styles/           # Global styles
-├── .env.local            # Environment variables (not tracked by Git)
-├── next.config.js        # Next.js configuration
-└── package.json          # Project dependencies and scripts
-```
 
 ---
 
@@ -152,15 +121,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Made with ❤️ by [Your Name](https://github.com/your-username).
-```
-
----
-
-### Key Additions:
-1. **Website Features**: Added a detailed list of features, including AI virtual try-on.
-2. **How AI Virtual Try-On Works**: Explained the workflow of the AI-powered virtual try-on feature.
-3. **Troubleshooting**: Added a section for common issues and solutions.
-4. **Contributing**: Included guidelines for contributors.
-
-This README is now comprehensive and provides all the necessary information for users, contributors, and developers. Let me know if you need further adjustments! 🎉
+Made with ❤️ by [Anh Thu](https://github.com/ariesanhthu).
