@@ -15,7 +15,6 @@ import { useEdgeStore } from "@/lib/edgestore";
 
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,

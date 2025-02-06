@@ -46,6 +46,6 @@ export async function POST(req: Request) {
         return NextResponse.json({ success: true, data: result.data});
 
     } catch (error) {
-        return NextResponse.json({ error: "Failed to fetch image" }, { status: 500 });
+        return NextResponse.json({ error: "Failed to fetch image" + error}, { status: 500 });
     }
 }
