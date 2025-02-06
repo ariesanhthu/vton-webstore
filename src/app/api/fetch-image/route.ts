@@ -7,13 +7,13 @@ import path from "path";
 
 export async function POST(req: Request) {
     try {
-        const { url } = await req.json();
+        const { url, mockProductImage } = await req.json();
 
-        if (!url) {
+        if (!url || !mockProductImage) {
             return NextResponse.json({ error: "URL is required" }, { status: 400 });
         }
         // tải ảnh background
-        const imagePath = path.join(process.cwd(), "public", "tshirt.jpg");
+        const imagePath = path.join(process.cwd(), "public", mockProductImage);
         const clothBuffer = fs.readFileSync(imagePath);
         const clothImage = new Blob([clothBuffer], { type: "image/jpeg" });
         

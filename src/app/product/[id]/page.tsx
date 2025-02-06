@@ -11,6 +11,18 @@ import mockClothingItems from '@/lib/seedData'
 import { SingleImageDropzone } from '@/components/SingleImageDropzone'
 
 import { useEdgeStore } from "@/lib/edgestore";
+
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Loader2, Sparkles, AlertCircle } from "lucide-react"
+
 import axios from "axios";
 
 // type Params = Promise<{ id: string }>
@@ -24,13 +36,19 @@ export default function ProductPage() {
     const [urls, setUrls] = useState<string>('');
     const { edgestore } = useEdgeStore();
     
+
+  const { id } = useParams();
+
+  const mockProduct = mockClothingItems.find((item) => item.id === id);
+  
   const fetchData = async () => {
     try {
       setLoading(true);
       setError(null);
       setImageUrl(null);
+      const Product = await mockClothingItems.find((item) => item.id === id);
 
-      const response = await axios.post("/api/fetch-image", { url: urls });
+      const response = await axios.post("/api/fetch-image", { url: urls, mockProductImage: Product?.imageUrl });
       console.log(response.data);
       if (response.data.success && Array.isArray(response.data.data)) {
         const url = response.data.data[0]?.url;
@@ -50,10 +68,6 @@ export default function ProductPage() {
     }
   };
 
-
-  const { id } = useParams();
-
-  const mockProduct = mockClothingItems.find((item) => item.id === id);
   if (!mockProduct) {
     notFound()
   }
@@ -109,7 +123,105 @@ export default function ProductPage() {
               </TabsList>
 
           {/* VIRTUAL TRY ON */}
-              <TabsContent value="tryon" className="space-y-4">            
+          <TabsContent value="tryon" className="space-y-6 p-4">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* Upload Section */}
+              <Card className="p-6 shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold">Upload Your Photo</CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    Upload a clear full-body photo for virtual try-on
+                  </CardDescription>
+                </CardHeader>
+                
+                <div className="space-y-4">
+                  <SingleImageDropzone
+                    width={200}
+                    height={200}
+                    value={file}
+                    dropzoneOptions={{
+                      maxSize: 1024 * 1024 * 3,
+                    }}
+                    onChange={async (file) => {
+                      await setFile(file);
+                      if(file) {
+                        try {
+                          const res = await edgestore.publicFiles.upload({
+                            file,
+                            options: { temporary: true }
+                          });
+                          await setUrls(res.url);
+                        } catch (error) {
+                          console.error('Error uploading file:', error);
+                        }
+                      }
+                    }}
+                    className="border-dashed border-2 rounded-lg bg-muted/50"
+                  />
+                  
+                  {urls && (
+                    <div className="relative aspect-square w-full overflow-hidden rounded-md border">
+                      <img 
+                        src={urls}
+                        alt="Upload preview"
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  )}
+                </div>
+              </Card>
+
+              {/* Try-On Section */}
+              <Card className="p-6 shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold">Virtual Try-On</CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    See how it looks on you
+                  </CardDescription>
+                </CardHeader>
+                
+                <div className="space-y-4">
+                  <Button 
+                    onClick={fetchData}
+                    disabled={loading}
+                    className="w-full gap-2"
+                    size="lg"
+                  >
+                    {loading ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Processing...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="h-4 w-4" />
+                        Try It On Now
+                      </>
+                    )}
+                  </Button>
+
+                  {error && (
+                    <Alert variant="destructive">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertTitle>Error</AlertTitle>
+                      <AlertDescription>{error}</AlertDescription>
+                    </Alert>
+                  )}
+
+                  {imageUrl && (
+                    <div className="relative aspect-square w-full overflow-hidden rounded-md border">
+                      <img
+                        src={imageUrl}
+                        alt="Virtual Try-On Result"
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  )}
+                </div>
+              </Card>
+            </div>
+          </TabsContent>
+              {/* <TabsContent value="tryon" className="space-y-4">            
                   <button
                     onClick={fetchData}
                     disabled={loading}
@@ -173,7 +285,7 @@ export default function ProductPage() {
                       />
                     </div>
                   )}
-              </TabsContent>
+              </TabsContent> */}
         {/* DETAIL */}
               <TabsContent value="details" className="space-y-4">
                 <p className="text-sm">{mockProduct.description}</p>

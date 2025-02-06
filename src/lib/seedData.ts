@@ -121,6 +121,46 @@ const mockClothingItems = [
     category: 'Jackets',
     tags: ['leather', 'casual', 'winter']
   },
+  {
+    id: '4',
+    name: 'Green Sleeveless Dress',
+    brand: 'Essential Wear',
+    description: 'A beautiful long green dress on a hanger on a white wall',
+    price: 29.99,
+    originalPrice: 39.99,
+    imageUrl: '/dress.jpg',
+    images: [
+      { url: '/dress.jpg', alt: 'Blue denim jeans front' },
+      { url: '/dress.jpg', alt: 'Blue denim jeans back' },
+      { url: '/dress.jpg', alt: 'Model wearing jeans' },
+      { url: '/dress.jpg', alt: 'Jeans detail' },
+    ],
+    sizes: [
+      { value:'s', label: 'S', available: true },
+      { value:'m', label: 'M', available: true },
+      { value: 'l', label: 'L', available: true },
+      { value: 'xl', label: 'XL', available: false },
+      { value: 'xxl', label: 'XXL', available: true },
+    ],
+    colors: [
+      { name: 'Green', value: '#008000', available: true },
+      { name: 'Black', value: '#000000', available: true },
+      { name: 'Gray', value: '#808080', available: false },
+    ],
+    fabric: '100% Leather',
+    care: ['Machine wash cold', 'Tumble dry low', 'Do not bleach'],
+    features: [
+      'Premium leather fabric',
+      'Regular fit',
+      'Crew neck',
+      'Pre-shrunk',
+    ],
+    stock: 10,
+    rating: 4.7,
+    reviewCount: 183,
+    category: 'Pants',
+    tags: ['denim', 'casual', 'everyday']
+  },
 ] 
 
 export default mockClothingItems;
