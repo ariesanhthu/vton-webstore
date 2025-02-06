@@ -8,7 +8,9 @@ import { ProductImageGallery } from '@/components/ProductImageGallery'
 import { SizeSelector } from '@/components/SizeSelector'
 import { ColorSelector } from '@/components/ColorSelector'
 import mockClothingItems from '@/lib/seedData'
+import { SingleImageDropzone } from '@/components/SingleImageDropzone'
 
+import { useEdgeStore } from "@/lib/edgestore";
 import axios from "axios";
 
 // type Params = Promise<{ id: string }>
@@ -17,6 +19,10 @@ export default function ProductPage() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const [file, setFile] = useState<File>();
+    // const [progress, setProgress] = useState(0);
+    const [urls, setUrls] = useState<string>('');
+    const { edgestore } = useEdgeStore();
     
   const fetchData = async () => {
     try {
@@ -24,13 +30,13 @@ export default function ProductPage() {
       setError(null);
       setImageUrl(null);
 
-      const response = await axios.get("/api/virtual-try-on");
-
+      const response = await axios.post("/api/fetch-image", { url: urls });
+      console.log(response.data);
       if (response.data.success && Array.isArray(response.data.data)) {
         const url = response.data.data[0]?.url;
         if (url) {
           setImageUrl(url);
-          console.log("Fetched URL:", url);
+          setUrls(url);
         } else {
           throw new Error("Invalid API response format");
         }
@@ -94,7 +100,7 @@ export default function ProductPage() {
           </div>
 
           <div className="pt-6">
-            <Tabs defaultValue="details">
+            <Tabs defaultValue="tryon">
               <TabsList className="w-full">
                 <TabsTrigger value="tryon" className="flex-1">Try on</TabsTrigger>
                 <TabsTrigger value="details" className="flex-1">Details</TabsTrigger>
@@ -111,7 +117,51 @@ export default function ProductPage() {
                   >
                     {loading ? "Processing..." : "Try Virtual Try-On"}
                   </button>
-            
+                  <p className='text-center'>
+                    {urls}
+                  </p>
+                  <div className='flex justify-center w-full h-full'>
+                    <img src={urls} 
+                    className='w-1/2 h-1/2'
+                    alt="image"
+                    />
+                    </div>
+                  <div className="space-y-2">
+                <SingleImageDropzone
+                  width={200}
+                  height={200}
+                  value={file}
+                  dropzoneOptions={{
+                    maxSize: 1024 * 1024 * 3, // 1MB
+                  }}
+                  onChange={async (file) => {
+                    await setFile(file);
+                    
+                    if(file){
+                      try {
+                        const res = await edgestore.publicFiles.upload({
+                            file,
+                            options:{
+                              temporary: true
+                            }
+                          }
+                        )
+
+                        await setUrls(res.url);
+                       
+                        // await setProduct({ ...product, url: res.url });  
+                      } catch (error) 
+                      {
+                        console.error('Error uploading file:', error);
+                      }
+                    }
+                  }
+                  
+                }
+                />
+               
+                
+            </div>
                   {error && <p className="text-red-500 mt-4">{error}</p>}
             
                   {imageUrl && (

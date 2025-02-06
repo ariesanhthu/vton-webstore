@@ -6,10 +6,10 @@ const mockClothingItems = [
     description: 'A timeless classic white t-shirt made from premium cotton. Perfect for everyday wear with a comfortable fit and durable construction.',
     price: 29.99,
     originalPrice: 39.99,
-    imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&auto=format&fit=crop&q=60',
+    imageUrl: '/tshirt.jpg',
     images: [
-      { url: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab', alt: 'White t-shirt front' },
-      { url: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a', alt: 'White t-shirt back' },
+      { url: '/tshirt.jpg', alt: 'White t-shirt front' },
+      { url: '/tshirt-black.jpg', alt: 'Black t-shirt front' },
       { url: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a', alt: 'Model wearing t-shirt' },
       { url: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a', alt: 'T-shirt detail' },
     ],
