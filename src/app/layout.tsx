@@ -4,6 +4,17 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { EdgeStoreProvider } from '../lib/edgestore';
 import "./globals.css";
 
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+
+import Navbar from "@/components/userAuth/Navbar";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,14 +36,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <EdgeStoreProvider>
-            {children}
-        </EdgeStoreProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+          <EdgeStoreProvider>
+            <Navbar />
+              {children}
+          </EdgeStoreProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
