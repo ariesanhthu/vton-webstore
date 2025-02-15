@@ -11,10 +11,8 @@ export default function Home() {
         {/* PRODUCT SECTION */}
         <div className="container py-10">
           <div className="flex flex-col gap-6">
-            <div>
-              <h1 className="text-3xl font-bold">Clothing Store</h1>
+              <h1 className="heading">Clothing Store</h1>
               <p className="text-muted-foreground">Browse our collection of clothing items</p>
-            </div>
 
             <div className="flex justify-between items-center">
               <div className="flex gap-4">

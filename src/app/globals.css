@@ -62,6 +62,12 @@ body {
   }
 }
 
+@layer utilities{
+  .heading{
+    @apply uppercase bg-black text-white text-lg font-bold p-2;
+    }    
+}
+
 @layer base {
   * {
     @apply border-border;
