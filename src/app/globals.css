@@ -66,6 +66,50 @@ body {
   .heading{
     @apply uppercase bg-black text-white text-lg font-bold p-2;
     }    
+  .glow-card {
+    box-shadow: 0 0 20px 0 rgba(58, 86, 214, 0.5),
+                inset 0 0 20px 0 rgba(58, 86, 214, 0.2);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 15px -20px rgba(58, 86, 214, 0.5);
+  }
+
+  .shadow-glow-hover {
+    box-shadow: 0 0 20px 0 rgba(58, 86, 214, 0.6);
+  }
+
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 10px rgba(58, 86, 214, 0.5));
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  
+  /* searchform */
+  /* ------------------------------------------------------------ */
+  .search-form {
+    @apply max-w-3xl w-full min-h-[80px] bg-white border-[3px] border-black rounded-[80px] text-[20px] mt-8 px-5 flex flex-row items-center gap-5;
+  }
+
+  .search-input {
+    @apply flex-1 font-bold placeholder:font-semibold w-full h-auto outline-none;
+  }
+
+  .search-btn {
+    @apply size-[40px] rounded-full bg-black flex justify-center items-center hover:bg-transparent hover:text-black hover:border-l-2 hover:border-black hover:border-[3px] !important;
+  }
+  /* ------------------------------------------------------------ */
 }
 
 @layer base {
