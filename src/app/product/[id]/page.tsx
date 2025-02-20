@@ -12,6 +12,7 @@ import { SingleImageDropzone } from '@/components/SingleImageDropzone'
 
 import { useEdgeStore } from "@/lib/edgestore";
 
+import Image from 'next/image'
 
 import {
   Card,
@@ -159,13 +160,15 @@ export default function ProductPage() {
                   />
                   
                   {urls && (
-                    <div className="relative aspect-square w-full overflow-hidden rounded-md border">
-                      <img 
-                        src={urls}
-                        alt="Upload preview"
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
+                    <div className="relative aspect-square h-48 w-full overflow-hidden rounded-md border">
+                    <Image 
+                      src={urls}
+                      alt="Upload preview"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  
                   )}
                 </div>
               </Card>

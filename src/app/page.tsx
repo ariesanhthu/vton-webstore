@@ -1,8 +1,6 @@
 // import Image from "next/image";
-import { Button } from "@/components/ui/button"
 import { ClothingGrid } from '@/components/ClothingGrid'
 import mockClothingItems from "@/lib/seedData";
-import { SignInButton, SignUpButton } from '@clerk/nextjs'
 
 import SearchForm from "@/components/SearchForm";
 
@@ -13,8 +11,10 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const params = { search: query || null };
 
+  // const params = { search: query || null };
+
+  // const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="max-w-5xl w-full text-center">

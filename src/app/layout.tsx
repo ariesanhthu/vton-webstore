@@ -6,11 +6,11 @@ import "./globals.css";
 
 import {
   ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
+  // SignInButton,
+  // SignUpButton,
+  // SignedIn,
+  // SignedOut,
+  // UserButton,
 } from '@clerk/nextjs'
 
 import Navbar from "@/components/userAuth/Navbar";
