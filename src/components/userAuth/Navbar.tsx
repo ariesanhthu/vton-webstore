@@ -24,6 +24,8 @@ const Navbar = () => {
             VTON CLOTHING<span className="text-primary"> STORE</span>
           </h1>
         </Link>
+      <Link href="/" className="text-black hover:text-slate-600 hover:border-[2px] border-black py-1 px-2 rounded-sm font-bold">Home</Link>
+      <Link href="/VTOnRoom" className="text-black hover:text-slate-600 hover:border-[2px] border-black py-1 px-2 rounded-sm font-bold">Try-on Clothes</Link>
         {!isSignedIn ? (
             <div className="flex gap-4">
                 <div className="text-white btn rounded-lg bg-gray-950 py-2 px-4 hover:bg-gray-900 transition">

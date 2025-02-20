@@ -1,5 +1,5 @@
-import { schemaTypes } from './src/sanity/schemaTypes';
 'use client'
+import { schemaTypes } from './src/sanity/schemaTypes';
 
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `\src\app\studio\[[...tool]]\page.tsx` route
