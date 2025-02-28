@@ -13,6 +13,7 @@
     "@clerk/nextjs": "^6.11.2",
     "@edgestore/react": "^0.2.2",
     "@edgestore/server": "^0.2.2",
+    "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.2",
     "@sanity/image-url": "^1.1.0",

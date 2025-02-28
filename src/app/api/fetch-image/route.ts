@@ -13,10 +13,10 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "URL is required" }, { status: 400 });
         }
         // tải ảnh background
-        const imagePath = path.join(process.cwd(), "public", mockProductImage);
-        const clothBuffer = fs.readFileSync(imagePath);
+        // const imagePath = path.join(process.cwd(), "public", mockProductImage);
+        const clothBuffer = fs.readFileSync("/public" + mockProductImage);
         const clothImage = new Blob([clothBuffer], { type: "image/jpeg" });
-        
+        console.log(clothImage.toString());
         // Tải ảnh từ URL
         const response = await axios.get(url, { responseType: "arraybuffer" });
         const imageBuffer = Buffer.from(response.data);

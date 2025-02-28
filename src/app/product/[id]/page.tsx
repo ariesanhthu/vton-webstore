@@ -10,6 +10,8 @@ import { ColorSelector } from '@/components/ColorSelector'
 import mockClothingItems from '@/lib/seedData'
 import { SingleImageDropzone } from '@/components/SingleImageDropzone'
 
+import { useCart } from "@/context/CartContext";
+
 import { useEdgeStore } from "@/lib/edgestore";
 
 import Image from 'next/image'
@@ -24,6 +26,16 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Loader2, Sparkles, AlertCircle } from "lucide-react"
 
 import axios from "axios";
+import { string } from 'zod'
+
+import CartSidebar from '@/components/CartSidebar'
+interface ProductProps {
+  id: string;
+  name: string;
+  price: number;
+  imageUrl: string;
+  // ... other fields
+}
 
 // type Params = Promise<{ id: string }>
 export default function ProductPage() {
@@ -36,11 +48,20 @@ export default function ProductPage() {
     const [urls, setUrls] = useState<string>('');
     const { edgestore } = useEdgeStore();
     
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const { id } = useParams();
 
   const mockProduct = mockClothingItems.find((item) => item.id === id);
-  
+
+  const tempProduct: ProductProps = {
+    id: mockProduct?.id ?? '',
+    name: mockProduct?.name ?? '',
+    price: mockProduct?.price ?? 0,
+    imageUrl: mockProduct?.imageUrl ?? ''
+  };
+
+
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -68,12 +89,31 @@ export default function ProductPage() {
     }
   };
 
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    console.log("Add to Cart clicked", tempProduct); // Debug log
+    setSidebarOpen(true);
+    if (tempProduct) {
+      addToCart({
+        id: tempProduct.id,
+        name: tempProduct.name,
+        price: tempProduct.price,
+        quantity: 1,
+        imageUrl: tempProduct.imageUrl
+      });
+    }
+  };
+
+
   if (!mockProduct) {
     notFound()
   }
 
   return (
     <div className="container py-10">
+      <CartSidebar open={sidebarOpen} onOpenChange={setSidebarOpen} />
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column - Images */}
         <ProductImageGallery images={mockProduct.images} />
@@ -109,7 +149,7 @@ export default function ProductPage() {
           </div>
 
           <div className="flex gap-4">
-            <Button size="lg" className="flex-1">Add to Cart</Button>
+            <Button size="lg" className="flex-1" onClick={handleAddToCart}>Add to Cart</Button>
             <Button size="lg" variant="outline">Save to Wishlist</Button>
           </div>
 

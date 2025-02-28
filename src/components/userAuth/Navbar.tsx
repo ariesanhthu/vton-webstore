@@ -1,6 +1,7 @@
 "use client";
 
 import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
+import Cart from "../Cart";
 import Link from "next/link";
 import Image from "next/image";
 const Navbar = () => {

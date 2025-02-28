@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { EdgeStoreProvider } from '../lib/edgestore';
 import "./globals.css";
 
+import { CartProvider } from "@/context/CartContext";
+
 import {
   ClerkProvider,
   // SignInButton,
@@ -43,7 +45,7 @@ export default function RootLayout({
           >
           <EdgeStoreProvider>
             <Navbar />
-              {children}
+            <CartProvider>{children}</CartProvider>
           </EdgeStoreProvider>
         </body>
       </html>

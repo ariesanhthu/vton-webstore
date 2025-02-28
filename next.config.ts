@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
         hostname: 'files.edgestore.dev',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'nymbo-virtual-try-on.hf.space',
+        pathname: '**',
+      },
     ],
   }
 };
