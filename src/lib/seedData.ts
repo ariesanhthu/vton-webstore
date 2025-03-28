@@ -158,9 +158,102 @@ const mockClothingItems = [
     stock: 10,
     rating: 4.7,
     reviewCount: 183,
-    category: 'Pants',
+    category: 'Tops',
     tags: ['denim', 'casual', 'everyday']
   },
+  {
+    id: '5',
+    name: 'Strap Top',
+    brand: 'Jersey Basic',
+    description: 'Jersey top with narrow shoulder straps.',
+    price: 19.99,
+    originalPrice: 29.99,
+    imageUrl: '/data/010/0108775015.jpg',
+    images: [
+      { url: '/data/010/0108775015.jpg', alt: 'Black strap top front' },
+      { url: '/data/010/0108775044.jpg', alt: 'White strap top front' },
+      { url: '/data/010/0108775051.jpg', alt: 'Striped strap top front' },
+    ],
+    sizes: [
+      { value: 'xs', label: 'XS', available: true },
+      { value: 's', label: 'S', available: true },
+      { value: 'm', label: 'M', available: true },
+    ],
+    colors: [
+      { name: 'Black', value: '#000000', available: true },
+      { name: 'White', value: '#FFFFFF', available: true },
+    ],
+    fabric: 'Cotton Blend',
+    care: ['Machine wash cold', 'Tumble dry low', 'Do not bleach'],
+    features: ['Slim fit', 'Soft cotton fabric', 'Stretchy material'],
+    stock: 20,
+    rating: 4.3,
+    reviewCount: 54,
+    category: 'Tops',
+    tags: ['vest top', 'casual', 'summer']
+  },
+  {
+    id: '6',
+    name: 'Babette Leggings',
+    brand: 'Jersey Fancy',
+    description: 'Leggings in soft jersey with a wide panel at the waist for best fit over the tummy. The cotton content of the leggings is organic.',
+    price: 24.99,
+    originalPrice: 34.99,
+    imageUrl: '/data/012/0120129001.jpg',
+    images: [
+      { url: '/data/012/0120129001.jpg', alt: 'Black leggings front' },
+      { url: '/data/012/0120129014.jpg', alt: 'Grey leggings front' },
+      { url: '/data/012/0120129018.jpg', alt: 'Red leggings front' },
+    ],
+    sizes: [
+      { value: 's', label: 'S', available: true },
+      { value: 'm', label: 'M', available: true },
+      { value: 'l', label: 'L', available: true },
+    ],
+    colors: [
+      { name: 'Black', value: '#000000', available: true },
+      { name: 'Grey', value: '#808080', available: true },
+      { name: 'Red', value: '#FF0000', available: true },
+    ],
+    fabric: 'Organic Cotton & Spandex',
+    care: ['Machine wash cold', 'Do not tumble dry', 'Do not bleach'],
+    features: ['Stretchy waistband', 'Soft jersey fabric', 'Comfort fit'],
+    stock: 25,
+    rating: 4.6,
+    reviewCount: 85,
+    category: 'Leggings',
+    tags: ['leggings', 'casual', 'organic cotton']
+  },
+  {
+    id: '7',
+    name: 'Velour Pyjama',
+    brand: 'Luxury Nightwear',
+    description: 'Soft and luxurious velour pyjama jumpsuit, perfect for a cozy and elegant nightwear experience.',
+    price: 10,
+    originalPrice: 10,
+    imageUrl: '/data/014/0141661022.jpg',
+    images: [
+      { url: '/data/014/0141661022.jpg', alt: 'White Velour pyjama front' },
+      { url: '/data/014/0141661025.jpg', alt: 'Pink Velour pyjama front' },
+    ],
+    sizes: [
+      { value: 's', label: 'S', available: true },
+      { value: 'm', label: 'M', available: true },
+      { value: 'l', label: 'L', available: false },
+    ],
+    colors: [
+      { name: 'White', value: '#FFFFFF', available: true },
+      { name: 'Pink', value: '#FF69B4', available: true },
+    ],
+    fabric: 'Application/3D',
+    care: ['Hand wash only', 'Do not bleach', 'Low heat ironing'],
+    features: ['Soft velour fabric', 'Elegant design', 'Full-body comfort'],
+    stock: 10,
+    rating: 4.7,
+    reviewCount: 56,
+    category: 'Nightwear',
+    tags: ['luxury', 'comfortable', 'soft'],
+  }
 ] 
 
 export default mockClothingItems;

@@ -20,8 +20,9 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
           alt={images[selectedImage].alt}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 60vw, (max-width: 1200px) 40vw, 25vw"
         />
+
       </div>
       <div className="grid grid-cols-4 gap-4">
         {images.map((image, index) => (
