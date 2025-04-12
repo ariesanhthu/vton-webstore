@@ -43,7 +43,7 @@ export function ClothingCard({ id, name, category, imageUrl, tags, price }: Clot
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
+            {tags?.map((tag) => (
               <Badge key={tag} variant="outline">
                 {tag}
               </Badge>

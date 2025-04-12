@@ -34,7 +34,6 @@ interface ProductProps {
   name: string;
   price: number;
   imageUrl: string;
-  // ... other fields
 }
 
 // type Params = Promise<{ id: string }>
