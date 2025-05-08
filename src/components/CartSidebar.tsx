@@ -11,11 +11,13 @@ import {
   SheetTitle,
   SheetClose,
 } from "@/components/ui/sheet";
-
+import Image from "next/image";
 interface CartSidebarProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
+import defaultLoader from '@/utils/defaultLoader'
+
 
 export default function CartSidebar({ open, onOpenChange }: CartSidebarProps) {
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
@@ -33,10 +35,11 @@ export default function CartSidebar({ open, onOpenChange }: CartSidebarProps) {
             {cart.map((item) => (
               <div key={item.id} className="flex items-center justify-between border-b pb-2">
                 <div className="flex items-center space-x-3">
-                  <img
+                  <Image
                     src={item.imageUrl}
                     alt={item.name}
                     className="w-12 h-12 rounded object-cover"
+                    loader={defaultLoader}
                   />
                   <div>
                     <div className="font-bold">{item.name}</div>

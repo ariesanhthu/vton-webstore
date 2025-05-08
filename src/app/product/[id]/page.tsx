@@ -14,8 +14,6 @@ import { useCart } from "@/context/CartContext";
 
 import { useEdgeStore } from "@/lib/edgestore";
 
-import Image from 'next/image'
-
 import {
   Card,
   CardDescription,
@@ -27,8 +25,9 @@ import { Loader2, Sparkles, AlertCircle } from "lucide-react"
 
 import axios from "axios";
 import { string } from 'zod'
-
+import Image from 'next/image'
 import CartSidebar from '@/components/CartSidebar'
+import defaultLoader from '@/utils/defaultLoader'
 interface ProductProps {
   id: string;
   name: string;
@@ -205,6 +204,7 @@ export default function ProductPage() {
                       alt="Upload preview"
                       fill
                       className="object-cover"
+                      loader={defaultLoader}
                     />
                   </div>
                   
@@ -251,10 +251,11 @@ export default function ProductPage() {
 
                   {imageUrl && (
                     <div className="relative aspect-square w-full overflow-hidden rounded-md border">
-                      <img
+                      <Image
                         src={imageUrl}
                         alt="Virtual Try-On Result"
                         className="object-cover w-full h-full"
+                        loader={defaultLoader}
                       />
                     </div>
                   )}

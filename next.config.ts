@@ -24,6 +24,21 @@ const nextConfig: NextConfig = {
         hostname: 'nymbo-virtual-try-on.hf.space',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'image.hm.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lp2.hm.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lp.cosstores.com',
+        pathname: '**',
+      },
     ],
   }
 };

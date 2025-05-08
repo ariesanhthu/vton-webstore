@@ -3,7 +3,8 @@
 import React from "react";
 import { useCart, CartItem } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
-
+import Image from "next/image";
+import defaultLoader from "@/utils/defaultLoader";
 export default function Cart() {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
 
@@ -18,7 +19,7 @@ export default function Cart() {
         {cart.map((item: CartItem) => (
           <li key={item.id} className="flex items-center justify-between bg-gray-800 p-4 rounded-lg">
             <div className="flex items-center space-x-4">
-              <img src={item.imageUrl} alt={item.name} className="w-16 h-16 rounded object-cover" />
+              <Image src={item.imageUrl} alt={item.name} className="w-16 h-16 rounded object-cover" loader={defaultLoader}/>
               <div>
                 <p className="font-semibold">{item.name}</p>
                 <p className="text-sm text-gray-300">{item.price} ₫</p>

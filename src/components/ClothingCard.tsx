@@ -16,6 +16,7 @@ interface ClothingCardProps {
   tags: string[]
   price: number
 }
+import defaultLoader from '@/utils/defaultLoader'
 
 export function ClothingCard({ id, name, category, imageUrl, tags, price }: ClothingCardProps) {
   const router = useRouter()
@@ -35,6 +36,7 @@ export function ClothingCard({ id, name, category, imageUrl, tags, price }: Clot
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loader={defaultLoader}
           />
         </div>
         <CardHeader>

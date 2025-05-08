@@ -32,7 +32,7 @@ export default function Home({
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('https://backend-vitonweb.onrender.com/api/v2/products/');
+        const response = await fetch('https://backend-vitonweb.onrender.com/api/v4/products');
     
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);

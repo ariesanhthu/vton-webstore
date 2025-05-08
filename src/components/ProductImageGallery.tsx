@@ -9,6 +9,7 @@ interface ProductImageGalleryProps {
   }[]
 }
 
+import defaultLoader from '@/utils/defaultLoader'
 export function ProductImageGallery({ images }: ProductImageGalleryProps) {
   const [selectedImage, setSelectedImage] = useState(0)
 
@@ -21,6 +22,7 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
           fill
           className="object-cover"
           sizes="(max-width: 768px) 60vw, (max-width: 1200px) 40vw, 25vw"
+          loader={defaultLoader}
         />
 
       </div>
@@ -39,6 +41,7 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
               fill
               className="object-cover"
               sizes="(max-width: 768px) 25vw, 10vw"
+              loader={defaultLoader}
             />
           </button>
         ))}
